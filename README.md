@@ -216,7 +216,7 @@ This project is part of the **DAW 2º Transversal Challenge**, integrating:
 ## ✨ Authors
 
 - Nelson Rosales
-- [Teammate 1]
+- Bryan Paico
 - [Teammate 2]
 
 ---
