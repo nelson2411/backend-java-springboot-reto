@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,11 @@ public class ReservaController {
   @PostMapping
   public ReservaResponseDTO createReserva(@RequestBody ReservaDTO dto) {
     return reservaService.createReserva(dto);
+  }
+  
+  @PutMapping("/{id}/cancelar")
+  public ReservaResponseDTO cancelarReserva(@PathVariable Long id) {
+    return reservaService.cancelarReserva(id);
   }
 
 }

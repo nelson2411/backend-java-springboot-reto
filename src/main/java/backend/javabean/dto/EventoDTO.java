@@ -1,7 +1,6 @@
 package backend.javabean.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,19 @@ public class EventoDTO {
   private Long id;
   private String titulo;
   private String descripcion;
-  private LocalDate fechaEvento;
+
+  private String fecha;
+  private String hora;
+  private String lugar;
+
   private BigDecimal precio;
+  private String tipo;
+  private String estado;
+
+  private Integer aforo;
+  private Integer entradasVendidas;
+
+  private String imagen;
+  private Boolean destacado;
 
 }
