@@ -32,7 +32,7 @@ public class EventoController {
 
   @GetMapping("/{id}")
   public EventoDTO getEventoById(@PathVariable Long id) {
-    return EventoMapper.toDTO(eventoService.getEventoById(id));
+    return EventoMapper.toDTODetalle(eventoService.getEventoById(id));
   }
 
   @GetMapping("/activos")

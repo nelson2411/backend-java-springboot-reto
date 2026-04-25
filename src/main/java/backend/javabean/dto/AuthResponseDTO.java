@@ -1,11 +1,11 @@
-package backend.javabean.controllers;
+package backend.javabean.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AuthResponseDto {
+public class AuthResponseDTO {
     private String token;
-    private UsuarioDto user;
+    private UsuarioDTO user;
 }
