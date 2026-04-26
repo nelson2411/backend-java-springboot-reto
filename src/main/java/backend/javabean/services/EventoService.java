@@ -29,24 +29,16 @@ public class EventoService {
         .orElseThrow(() -> new RuntimeException("Evento no encontrado con id: " + id));
   }
 
-  /*
-   * Method for create a new event
-   */
   public Evento createEvento(Evento evento) {
     return eventoRepository.save(evento);
   }
 
-  /*
-   * Method for getting estados activos
-   */
-
   public List<EventoDTO> getEventosActivos() {
-    return eventoRepository.findByEstado("activo").stream()
+    return eventoRepository.findByEstado("ACTIVO").stream()
         .map(EventoMapper::toDTO)
         .toList();
   }
 
-  // find by "Destacado" field if it's true
   public List<EventoDTO> getEventosDestacados() {
     return eventoRepository.findByDestacadoTrue().stream()
         .map(EventoMapper::toDTO)
@@ -55,8 +47,32 @@ public class EventoService {
 
   public EventoDTO createEvento(EventoDTO eventoDTO) {
     Evento evento = EventoMapper.toEntity(eventoDTO);
-    Evento savedEvento = eventoRepository.save(evento);
-    return EventoMapper.toDTO(savedEvento);
+    Evento eventoGuardado = eventoRepository.save(evento);
+    return EventoMapper.toDTODetalle(eventoGuardado);
+  }
+
+  public EventoDTO actualizarEvento(Long id, EventoDTO eventoDTO) {
+    Evento eventoActual = eventoRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Evento no encontrado con id: " + id));
+
+    Evento eventoActualizado = EventoMapper.toEntity(eventoDTO);
+
+    eventoActual.setTitulo(eventoActualizado.getTitulo());
+    eventoActual.setDescripcion(eventoActualizado.getDescripcion());
+    eventoActual.setFechaEvento(eventoActualizado.getFechaEvento());
+    eventoActual.setHoraEvento(eventoActualizado.getHoraEvento());
+    eventoActual.setLugar(eventoActualizado.getLugar());
+    eventoActual.setAforoMaximo(eventoActualizado.getAforoMaximo());
+    eventoActual.setEntradasVendidas(eventoActualizado.getEntradasVendidas());
+    eventoActual.setPrecio(eventoActualizado.getPrecio());
+    eventoActual.setImagenUrl(eventoActualizado.getImagenUrl());
+    eventoActual.setDestacado(eventoActualizado.getDestacado());
+    eventoActual.setEstado(eventoActualizado.getEstado());
+    eventoActual.setTipoId(eventoActualizado.getTipoId());
+
+    Evento eventoGuardado = eventoRepository.save(eventoActual);
+
+    return EventoMapper.toDTODetalle(eventoGuardado);
   }
 
 }

@@ -2,8 +2,11 @@ package backend.javabean.models;
 
 import java.time.LocalDateTime;
 
+import backend.javabean.enums.RolUsuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +34,8 @@ public class Usuario {
   private String password;
   private String telefono;
   private Boolean activo;
+  @Enumerated(EnumType.STRING)
+  private RolUsuario rol;
 
   @Column(name = "fecha_registro")
   private LocalDateTime fechaRegistro;

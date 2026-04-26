@@ -15,6 +15,7 @@ import backend.javabean.dto.AuthResponseDTO;
 import backend.javabean.dto.RegistroUsuarioDto;
 import backend.javabean.dto.UsuarioDTO;
 import backend.javabean.dto.UsuarioLoginDto;
+import backend.javabean.enums.RolUsuario;
 import backend.javabean.models.Usuario;
 import backend.javabean.repositories.UsuarioRepository;
 import backend.javabean.security.JwtUtil;
@@ -54,6 +55,7 @@ public class AuthController {
                 .apellidos(usuario.getApellidos())
                 .email(usuario.getEmail())
                 .telefono(usuario.getTelefono())
+                .rol(usuario.getRol().name())
                 .build();
 
         return ResponseEntity.ok(new AuthResponseDTO(token, usuarioDTO));
@@ -73,6 +75,7 @@ public class AuthController {
                 .password(passwordEncoder.encode(registroDto.getPassword()))
                 .telefono(registroDto.getTelefono())
                 .activo(true)
+                .rol(RolUsuario.CLIENTE)
                 .fechaRegistro(LocalDateTime.now())
                 .build();
 
