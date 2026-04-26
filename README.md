@@ -217,7 +217,7 @@ This project is part of the **DAW 2º Transversal Challenge**, integrating:
 
 - Nelson Rosales
 - Bryan Paico
-- [Teammate 2]
+- Adrian Ramses
 
 ---
 
