@@ -65,7 +65,9 @@ public class SecurityConfig {
         config.setAllowedOriginPatterns(List.of(
                 "http://localhost:4200",
                 "https://frontend-angular-reto.vercel.app",
-                "https://*.vercel.app"
+                "https://*.vercel.app",
+                "https://appdeploytest.com",
+                "https://www.appdeploytest.com"
         ));
 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
